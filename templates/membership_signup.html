@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Create User{% endblock %}
+{% block body %}
+    <h1>German Shepherd Dog Club of Minneapolis & St. Paul</h1>
+
+    <h2>Membership Application Form</h2>
+    <form action="/users" method="POST">
+        <p>First Name <input type="text" name="fname"></p>
+        <p>Last Name <input type="text" name="lname"></p>
+        <p>Email <input type="text" name="email"></p>
+
+<!--        This will be implemented later date-->
+<!--        <p>address <input type="text" name="address"></p>-->
+<!--        <p>city <input type="text" name="city"></p>-->
+<!--        <p>zip_code <input type="text" name="zip_code"></p>-->
+<!--        <p>phone <input type="text" name="phone"></p>-->
+<!--        <p>pref_communication <input type="text" prefcommunication="email"></p>-->
+<!--        <p>print_permissions <input type="text" printpermissions="email"></p>-->
+<!--        <p>password <input type="text" name="password"></p>-->
+<!--        <p>other_orgs <input type="text" name="other_orgs"></p>-->
+<!--        <p>num_of_gsd <input type="text" name="num_of_gsd"></p>-->
+<!--        <p>num_breedings <input type="text" name="num_breedings"></p>-->
+
+        <p><input type="submit"></p>
+    </form>
+{% endblock %}
