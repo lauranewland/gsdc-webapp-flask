@@ -34,7 +34,7 @@ def register_user():
     zip_code = request.form.get('zip_code')
     phone = request.form.get('phone')
     pref_communication = request.form.get('pref_communication')
-    print_permissions = request.form.get('print_permissions')
+    print_permissions = bool(request.form.get('print_permissions'))
     member_type = request.form.get('member_type')
     # password = request.form.get('password')
     other_orgs = request.form.get('other_orgs')
@@ -46,7 +46,6 @@ def register_user():
     if user:
         flash('Email Already Exists.')
     else:
-        # crud.create_user(fname, lname, email)
 
         crud.create_user(fname, lname, email, address, city, zip_code, phone, pref_communication, print_permissions,
                          member_type, other_orgs, num_of_gsd, num_breedings)
