@@ -1,19 +1,6 @@
 from model import Users, Interest, db
 
 
-# def create_user(fname, lname, email):
-#     """Create and return a new user."""
-#     user = Users(fname=fname, lname=lname, email=email)
-#
-#     # Adds user interest to the database session
-#     db.add(user)
-#
-#     # Commits user interest to the database
-#     db.commit()
-#
-#     return user
-
-
 def create_user(fname, lname, email, address, city, zip_code, phone, pref_communication, print_permissions,
                 member_type, other_orgs, num_of_gsd, num_breedings):
     user = Users(fname=fname, lname=lname, email=email, address=address, city=city, zip_code=zip_code, phone=phone,
