@@ -29,14 +29,13 @@ def register_user():
     fname = request.form.get('fname')
     lname = request.form.get('lname')
     email = request.form.get('email')
-
-    # This will be implemented later
     address = request.form.get('address')
     city = request.form.get('city')
     zip_code = request.form.get('zip_code')
     phone = request.form.get('phone')
     pref_communication = request.form.get('pref_communication')
     print_permissions = request.form.get('print_permissions')
+    member_type = request.form.get('member_type')
     # password = request.form.get('password')
     other_orgs = request.form.get('other_orgs')
     num_of_gsd = request.form.get('num_of_gsd')
@@ -49,8 +48,8 @@ def register_user():
     else:
         # crud.create_user(fname, lname, email)
 
-        crud.create_user(fname, lname, email, address, city, zip_code, phone, pref_communication,
-                         print_permissions, other_orgs, num_of_gsd, num_breedings)
+        crud.create_user(fname, lname, email, address, city, zip_code, phone, pref_communication, print_permissions,
+                         member_type, other_orgs, num_of_gsd, num_breedings)
 
         flash('Membership Application Submitted.')
 
