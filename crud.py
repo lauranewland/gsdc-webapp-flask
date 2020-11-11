@@ -1,12 +1,15 @@
-from model import Users, db
+from model import Users, Interest, db
 
 
 def create_user(fname, lname, email):
     """Create and return a new user."""
     user = Users(fname=fname, lname=lname, email=email)
 
-    db.session.add(user)
-    db.session.commit()
+    # Adds user interest to the database session
+    db.add(user)
+
+    # Commits user interest to the database
+    db.commit()
 
     return user
 
@@ -29,3 +32,22 @@ def get_user_by_email(email):
     """Queries a user by email"""
 
     return Users.query.filter(Users.email == email).first()
+
+
+def create_user_interest(obedience, rally, conformation, agility, herding, scentwork, fun_match, shep_o_gram,
+                         training, hospitality, fundraising, gsd_fun_day, demo_mn_fair, annual_banquet, breeding,
+                         other):
+    """Creates a user interest"""
+
+    interest = Interest(obedience=obedience, rally=rally, conformation=conformation, agility=agility,
+                        herding=herding, scentwork=scentwork, fun_match=fun_match, shep_o_gram=shep_o_gram,
+                        training=training, hospitality=hospitality, fundraising=fundraising, gsd_fun_day=gsd_fun_day,
+                        demo_mn_fair=demo_mn_fair, annual_banquet=annual_banquet, breeding=breeding, other=other)
+
+    # Adds user interest to the database session
+    db.add(interest)
+
+    # Commits user interest to the database
+    db.commit()
+
+    return interest
