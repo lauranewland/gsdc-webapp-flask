@@ -37,13 +37,11 @@ class Users(db.Model):
     other_orgs = db.Column(db.Text)
     num_of_gsd = db.Column(db.Integer)
     num_breedings = db.Column(db.Integer)
+
     # app_date = db.Column(Date)
     # # co_app_fname = db.Column(db.String(50))
     # # co_app_lname = db.Column(db.String(50))
     # # co_app_email = db.Column(db.String(100))
-
-    # Add Relationship to Interest Table
-    # interest = relationship('Interest', back_populates='user')
 
     def __repr__(self):
         return f'<user_id={self.user_id}, fname={self.fname}, lname={self.lname}>'
@@ -75,10 +73,5 @@ class Interest(db.Model):
     breeding = db.Column(db.Boolean)
     other = db.Column(db.String(100))
 
-    # Add Relationship to Users Table
-    # user = relationship('User', back_populates='interest')
-
     def __repr__(self):
         return f'<interest_id={self.interest_id}, obedience={self.obedience}, training={self.training}>'
-
-
