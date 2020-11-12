@@ -41,14 +41,35 @@ def register_user():
     num_of_gsd = request.form.get('num_of_gsd')
     num_breedings = request.form.get('num_breedings')
 
+    obedience = bool(request.form.get('obedience'))
+    rally = bool(request.form.get('rally'))
+    conformation = bool(request.form.get('conformation'))
+    agility = bool(request.form.get('agility'))
+    herding = bool(request.form.get('herding'))
+    scentwork = bool(request.form.get('scentwork'))
+    fun_match = bool(request.form.get('fun_match'))
+    shep_o_gram = bool(request.form.get('shep_o_gram'))
+    training = bool(request.form.get('training'))
+    hospitality = bool(request.form.get('hospitality'))
+    fundraising = bool(request.form.get('fundraising'))
+    gsd_fun_day = bool(request.form.get('gsd_fun_day'))
+    demo_mn_fair = bool(request.form.get('demo_mn_fair'))
+    annual_banquet = bool(request.form.get('annual_banquet'))
+    breeding = bool(request.form.get('breeding'))
+    other = request.form.get('other')
+
     user = crud.get_user_by_email(email)
 
     if user:
         flash('Email Already Exists.')
     else:
 
-        crud.create_user(fname, lname, email, address, city, zip_code, phone, pref_communication, print_permissions,
+        new_user = crud.create_user(fname, lname, email, address, city, zip_code, phone, pref_communication, print_permissions,
                          member_type, other_orgs, num_of_gsd, num_breedings)
+
+        crud.create_user_interest(new_user.user_id, obedience, rally, conformation, agility, herding, scentwork, fun_match, shep_o_gram,
+                                  training, hospitality, fundraising, gsd_fun_day, demo_mn_fair, annual_banquet,
+                                  breeding, other)
 
         flash('Membership Application Submitted.')
 
