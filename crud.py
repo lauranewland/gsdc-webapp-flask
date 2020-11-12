@@ -7,8 +7,14 @@ def create_user(fname, lname, email, address, city, zip_code, phone, pref_commun
                  pref_communication=pref_communication, print_permissions=print_permissions, member_type=member_type,
                  other_orgs=other_orgs, num_of_gsd=num_of_gsd, num_breedings=num_breedings)
 
+    # Adds user interest to the database session
     db.session.add(user)
+
+    # Commits user interest to the database
     db.session.commit()
+
+    # Refreshes the database instances
+    db.session.refresh(user)
 
     return user
 
@@ -19,20 +25,24 @@ def get_user_by_email(email):
     return Users.query.filter(Users.email == email).first()
 
 
-def create_user_interest(obedience, rally, conformation, agility, herding, scentwork, fun_match, shep_o_gram,
-                         training, hospitality, fundraising, gsd_fun_day, demo_mn_fair, annual_banquet, breeding,
-                         other):
+def create_user_interest(user_id, obedience, rally, conformation, agility, herding, scentwork, fun_match, shep_o_gram,
+                         training, hospitality, fundraising, gsd_fun_day, demo_mn_fair,
+                         annual_banquet, breeding, other):
+
     """Creates a user interest"""
 
-    interest = Interest(obedience=obedience, rally=rally, conformation=conformation, agility=agility,
+    interest = Interest(user_id=user_id, obedience=obedience, rally=rally, conformation=conformation, agility=agility,
                         herding=herding, scentwork=scentwork, fun_match=fun_match, shep_o_gram=shep_o_gram,
                         training=training, hospitality=hospitality, fundraising=fundraising, gsd_fun_day=gsd_fun_day,
                         demo_mn_fair=demo_mn_fair, annual_banquet=annual_banquet, breeding=breeding, other=other)
 
     # Adds user interest to the database session
-    db.add(interest)
+    db.session.add(interest)
 
     # Commits user interest to the database
-    db.commit()
+    db.session.commit()
+
+    # Refreshes the database instances
+    db.session.refresh(interest)
 
     return interest
