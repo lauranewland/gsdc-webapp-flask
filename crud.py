@@ -1,4 +1,4 @@
-from model import Users, Interest, db
+from model import Users, Interest, db, connect_to_db
 
 
 def create_user(fname, lname, email, address, city, zip_code, phone, pref_communication, print_permissions,
@@ -27,12 +27,12 @@ def get_user_by_email(email):
 
 def get_all_users():
     """Queries and returns all users"""
-    return db.query(Users).all()
+    return Users.query.all()
 
 
-def get_user(fname):
+def get_user(user_input):
     """Queries and returns a user"""
-    return db.queryfilter(Users.fname == fname).first()
+    return Users.query.filter(Users.fname == user_input).all()
 
 
 def create_user_interest(user_id, obedience, rally, conformation, agility, herding, scentwork, fun_match, shep_o_gram,
@@ -57,4 +57,8 @@ def create_user_interest(user_id, obedience, rally, conformation, agility, herdi
 
     return interest
 
+
+if __name__ == '__main__':
+    from server import app
+    connect_to_db(app)
 
