@@ -3,7 +3,22 @@
 {% block body %}
     <h1>Membership Directory Search</h1>
 
-    <input type="text" id="memberInput" placeholder="Search Here">
+        <form action="/search" method="POST" >
+            <p>Search <input type="text" name="memberInput"></p>
+            <p><input type="submit"></p>
 
+        </form>
+    <ul>
+        {% for u in name %}
+        <li>
+
+                {{ u.fname }}   {{ u.lname }}
+            </a>
+        </li>
+
+        {% endfor %}
+    </ul>
+    <br>
+    <br>
 
 {% endblock %}
