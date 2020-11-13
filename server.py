@@ -65,10 +65,12 @@ def register_user():
         return redirect('/signup')
     else:
 
-        new_user = crud.create_user(fname, lname, email, address, city, zip_code, phone, pref_communication, print_permissions,
-                         member_type, other_orgs, num_of_gsd, num_breedings)
+        new_user = crud.create_user(fname, lname, email, address, city, zip_code, phone, pref_communication,
+                                    print_permissions,
+                                    member_type, other_orgs, num_of_gsd, num_breedings)
 
-        crud.create_user_interest(new_user.user_id, obedience, rally, conformation, agility, herding, scentwork, fun_match, shep_o_gram,
+        crud.create_user_interest(new_user.user_id, obedience, rally, conformation, agility, herding, scentwork,
+                                  fun_match, shep_o_gram,
                                   training, hospitality, fundraising, gsd_fun_day, demo_mn_fair, annual_banquet,
                                   breeding, other)
 
@@ -84,22 +86,31 @@ def signup_page():
     return render_template('membership_signup.html')
 
 
+# @app.route('/user')
+# def all_users():
+#     user = crud.get_all_users()
+#     return render_template('all_users.html', user=user)
+
+
 @app.route('/search')
 def search():
-    """Routes user to Membership Directory Search"""
+    """Renders Search.html"""
 
     return render_template('search.html')
 
 
-@app.route('/search')
+@app.route('/search', methods=["GET", "POST"])
 def search_user_by_name():
     """Takes in a request from Search.html and returns results"""
 
-    fname = request.form.get('fname')
-    test = request.form.par()
+    # Takes in the search input
+    user_input = request.form.get('memberInput')
 
+    # Queries the users input against the database
+    name = crud.get_user(user_input)
 
-    return
+    # Passes the query results back to Search.html
+    return render_template('search.html', name=name)
 
 
 if __name__ == '__main__':
