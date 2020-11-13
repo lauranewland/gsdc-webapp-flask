@@ -92,13 +92,6 @@ def signup_page():
 #     return render_template('all_users.html', user=user)
 
 
-@app.route('/search')
-def search():
-    """Renders Search.html"""
-
-    return render_template('search.html')
-
-
 @app.route('/search', methods=["GET", "POST"])
 def search_user_by_name():
     """Takes in a request from Search.html and returns results"""
