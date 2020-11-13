@@ -62,6 +62,7 @@ def register_user():
 
     if user:
         flash('Email Already Exists.')
+        return redirect('/signup')
     else:
 
         new_user = crud.create_user(fname, lname, email, address, city, zip_code, phone, pref_communication, print_permissions,
@@ -73,7 +74,7 @@ def register_user():
 
         flash('Membership Application Submitted.')
 
-    return redirect('/signup')
+    return redirect('/')
 
 
 @app.route('/signup')
@@ -83,10 +84,22 @@ def signup_page():
     return render_template('membership_signup.html')
 
 
-# @app.route('/users/{user_id}/interest/', methods=['POST'])
-# def create_interest_for_user():
-#     """Returns a newly created item"""
-#     pass
+@app.route('/search')
+def search():
+    """Routes user to Membership Directory Search"""
+
+    return render_template('search.html')
+
+
+@app.route('/search')
+def search_user_by_name():
+    """Takes in a request from Search.html and returns results"""
+
+    fname = request.form.get('fname')
+    test = request.form.par()
+
+
+    return
 
 
 if __name__ == '__main__':
