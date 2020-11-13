@@ -25,6 +25,16 @@ def get_user_by_email(email):
     return Users.query.filter(Users.email == email).first()
 
 
+def get_all_users():
+    """Queries and returns all users"""
+    return db.query(Users).all()
+
+
+def get_user(fname):
+    """Queries and returns a user"""
+    return db.queryfilter(Users.fname == fname).first()
+
+
 def create_user_interest(user_id, obedience, rally, conformation, agility, herding, scentwork, fun_match, shep_o_gram,
                          training, hospitality, fundraising, gsd_fun_day, demo_mn_fair,
                          annual_banquet, breeding, other):
@@ -46,3 +56,5 @@ def create_user_interest(user_id, obedience, rally, conformation, agility, herdi
     db.session.refresh(interest)
 
     return interest
+
+
