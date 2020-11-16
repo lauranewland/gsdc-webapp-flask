@@ -17,6 +17,21 @@
           {{ msg }}
         </p>
       {% endfor %}
+
+    <style>
+        table, th, td {
+          width="100%";
+          cellspacing="0";
+          cellpadding="0";
+          border="0";
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 15px;
+        }
+  </style>
+
     {% block after_body %}{% endblock %}
   </body>
 </html>
