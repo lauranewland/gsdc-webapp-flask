@@ -86,10 +86,10 @@ def signup_page():
     return render_template('membership_signup.html')
 
 
-# @app.route('/user')
-# def all_users():
-#     user = crud.get_all_users()
-#     return render_template('all_users.html', user=user)
+@app.route('/user')
+def all_users():
+    user = crud.get_all_users()
+    return render_template('all_users.html', user=user)
 
 
 @app.route('/search', methods=["GET", "POST"])
@@ -100,10 +100,10 @@ def search_user_by_name():
     user_input = request.form.get('memberInput')
 
     # Queries the users input against the database
-    name = crud.get_user(user_input)
+    user = crud.get_user(user_input)
 
     # Passes the query results back to Search.html
-    return render_template('search.html', name=name)
+    return render_template('search.html', user=user)
 
 
 if __name__ == '__main__':
