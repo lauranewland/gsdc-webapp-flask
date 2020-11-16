@@ -6,19 +6,43 @@
         <form action="/search" method="POST" >
             <p>Search <input type="text" name="memberInput"></p>
             <p><input type="submit"></p>
-
         </form>
-    <ul>
-        {% for u in name %}
-        <li>
-
-                {{ u.fname }}   {{ u.lname }}
-            </a>
-        </li>
-
-        {% endfor %}
-    </ul>
-    <br>
-    <br>
+        <table>
+          <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>Zip Code</th>
+              <th>Phone</th>
+              <th>Pref Comms</th>
+              <th>Print Permissions</th>
+              <th>Member Type</th>
+              <th>Other Orgs</th>
+              <th># of GSDs</th>
+              <th># of Breedings</th>
+          </tr>
+            {% for u in user %}
+          <tr>
+              <td>{{ u.fname }}</td>
+              <td>{{ u.lname }}</th>
+              <td>{{ u.email }}</td>
+              <td>{{ u.address }}</td>
+              <td>{{ u.city }}</td>
+              <td>{{ u.zip_code }}</td>
+              <td>{{ u.phone }}</td>
+              <td>{{ u.pref_communication }}</td>
+              <td>{{ u.print_permissions }}</td>
+              <td>{{ u.member_type }}</td>
+              <td>{{ u.other_orgs }}</td>
+              <td>{{ u.num_of_gsd }}</td>
+              <td>{{ u.num_breedings }}</td>
+          </tr>
+            {% endfor %}
+         </table>
+<br>
+<br>
+<footer><a href="/">Back to Homepage</a> </footer>
 
 {% endblock %}
