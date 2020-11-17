@@ -3,7 +3,6 @@ from model import connect_to_db
 from jinja2 import StrictUndefined
 import crud
 
-
 # Creates an instance of the Flask
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -37,7 +36,7 @@ def register_user():
     pref_communication = request.form.get('pref_communication')
     print_permissions = bool(request.form.get('print_permissions'))
     member_type = request.form.get('member_type')
-    # password = request.form.get('password')
+    password = request.form.get('password')
     other_orgs = request.form.get('other_orgs')
     num_of_gsd = request.form.get('num_of_gsd')
     num_breedings = request.form.get('num_breedings')
@@ -67,8 +66,7 @@ def register_user():
     else:
 
         new_user = crud.create_user(fname, lname, email, address, city, zip_code, phone, pref_communication,
-                                    print_permissions,
-                                    member_type, other_orgs, num_of_gsd, num_breedings)
+                                    print_permissions, member_type, password, other_orgs, num_of_gsd, num_breedings)
 
         crud.create_user_interest(new_user.user_id, obedience, rally, conformation, agility, herding, scentwork,
                                   fun_match, shep_o_gram,
@@ -121,13 +119,32 @@ def search_user_by_name():
 #     return render_template('interest.html', user=user)
 
 
-@app.route('/login', methods=["GET", "POST"])
+@app.route('/login')
 def login_page():
-    """Renders Login  Page"""
-
-
-
     return render_template('login.html')
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login_check():
+    """Renders Login Page"""
+
+    email = request.form.get('user_email')
+    print(email)
+    password = request.form.get('user_pass')
+    print(password)
+
+    try:
+        user = crud.get_user_by_email(email)
+        if password == user.password:
+            session['email'] = email
+            flash('Successful Login')
+        else:
+            flash('Password Incorrect')
+            return redirect('/login')
+    except AttributeError:
+        flash('Email not found')
+        return redirect('/login')
+    return render_template('login_landing.html')
 
 
 # @app.route('/logout', methods=["POST"])
