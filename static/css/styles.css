@@ -1,0 +1,19 @@
+table, th, td {
+    width="100%";
+    cellspacing="0";
+    cellpadding="0";
+    border="0";
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+
+body.dark-theme {
+  color: #eee;
+  background: #121212;
+}
+body.dark-theme a {
+  color: #809fff;
+}
