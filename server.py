@@ -1,7 +1,8 @@
 from flask import (Flask, render_template, request, flash, session, redirect)
 from model import connect_to_db
-import crud
 from jinja2 import StrictUndefined
+import crud
+
 
 # Creates an instance of the Flask
 app = Flask(__name__)
@@ -104,6 +105,35 @@ def search_user_by_name():
 
     # Passes the query results back to Search.html
     return render_template('search.html', user=user)
+
+
+# @app.route('/interest', methods=["GET", "POST"])
+# def search_user_interest():
+#     """Takes in a request from Search.html and returns results"""
+#
+#     # Takes in the search input
+#     user_input = request.form.get('memberInput')
+#
+#     # Queries the users input against the database
+#     user = crud.get_user_interest(user_input)
+#
+#     # Passes the query results back to Search.html
+#     return render_template('interest.html', user=user)
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login_page():
+    """Renders Login  Page"""
+
+
+
+    return render_template('login.html')
+
+
+# @app.route('/logout', methods=["POST"])
+# def login_out():
+#
+#     return redirect('/')
 
 
 if __name__ == '__main__':
