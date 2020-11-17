@@ -2,10 +2,10 @@ from model import Users, Interest, db, connect_to_db
 
 
 def create_user(fname, lname, email, address, city, zip_code, phone, pref_communication, print_permissions,
-                member_type, other_orgs, num_of_gsd, num_breedings):
+                member_type, password, other_orgs, num_of_gsd, num_breedings):
     user = Users(fname=fname, lname=lname, email=email, address=address, city=city, zip_code=zip_code, phone=phone,
                  pref_communication=pref_communication, print_permissions=print_permissions, member_type=member_type,
-                 other_orgs=other_orgs, num_of_gsd=num_of_gsd, num_breedings=num_breedings)
+                 password=password, other_orgs=other_orgs, num_of_gsd=num_of_gsd, num_breedings=num_breedings)
 
     # Adds user interest to the database session
     db.session.add(user)
