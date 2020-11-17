@@ -1,37 +1,31 @@
 <!doctype html>
 <html>
   <head>
+
     <script src="https://code.jquery.com/jquery-3.5.1.js"
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
             crossorigin="anonymous"></script>
-    <title>
-      {% block title %}{% endblock %}
-    </title>
 
-    {% block head %}{% endblock %}
+    <link rel="stylesheet" href="/static/css/styles.css">
+
   </head>
+
   <body>
+
     {% block body %}{% endblock %}
+
       {% for msg in get_flashed_messages() %}
+
         <p class="flash-msg">
           {{ msg }}
         </p>
+
       {% endfor %}
 
-    <style>
-        table, th, td {
-          width="100%";
-          cellspacing="0";
-          cellpadding="0";
-          border="0";
-          border: 1px solid black;
-          border-collapse: collapse;
-        }
-        th, td {
-          padding: 15px;
-        }
-  </style>
+    <button class="btn-toggle">Dark-Mode</button>
 
-    {% block after_body %}{% endblock %}
+    <script src="/static/membership.js"></script>
+
   </body>
+
 </html>
