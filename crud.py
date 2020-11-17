@@ -38,7 +38,6 @@ def get_user(user_input):
 def create_user_interest(user_id, obedience, rally, conformation, agility, herding, scentwork, fun_match, shep_o_gram,
                          training, hospitality, fundraising, gsd_fun_day, demo_mn_fair,
                          annual_banquet, breeding, other):
-
     """Creates a user interest"""
 
     interest = Interest(user_id=user_id, obedience=obedience, rally=rally, conformation=conformation, agility=agility,
@@ -58,7 +57,22 @@ def create_user_interest(user_id, obedience, rally, conformation, agility, herdi
     return interest
 
 
+# def get_user_interest(interest_input):
+#     """Queries an interest and returns members associated with it"""
+#
+#     query = ("SELECT fname, lname, email FROM users WHERE user_id IN "
+#              "(SELECT user_id FROM interests WHERE interest_input = true)")
+#
+#     # Executes the Query
+#     db_cursor = db.session.execute(query, {'interest_input': interest_input})
+#
+#     # Retrieves all data from the query
+#     full_query = db_cursor.fetchall()
+#
+#     return full_query
+
+
 if __name__ == '__main__':
     from server import app
-    connect_to_db(app)
 
+    connect_to_db(app)
