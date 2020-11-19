@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Create User{% endblock %}
 {% block body %}
-    <h1>Interest Directory Search</h1>
+    <h1>Membership Directory Search</h1>
 
         <form action="/interest" method="POST" autocomplete="on" >
             <p>Search <input type="text" name="memberInput"></p>
@@ -13,7 +13,7 @@
               <th>Email</th>
 
           </tr>
-            {% for u in user %}
+            {% for u in test %}
           <tr>
               <td>{{ u.fname }}</td>
               <td>{{ u.lname }}</th>
@@ -24,6 +24,8 @@
          </table>
 <br>
 <br>
-<footer><a href="/">Back to Homepage</a> </footer>
+
+
+<footer><a href="/login_landing">Back to Homepage</a> </footer>
 
 {% endblock %}
