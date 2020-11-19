@@ -1,12 +1,23 @@
 from flask import (Flask, render_template, request, flash, session, redirect)
-from model import connect_to_db
+from werkzeug.security import check_password_hash
+from model import connect_to_db, Users
 from jinja2 import StrictUndefined
 import crud
+from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 
 # Creates an instance of the Flask
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
+
+login_manager = LoginManager()
+login_manager.login_view = 'app.login'
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Users.query.get(int(user_id))
 
 
 @app.route('/')
@@ -58,20 +69,23 @@ def register_user():
     breeding = bool(request.form.get('breeding'))
     other = request.form.get('other')
 
+    # Queries database on the email address and stores all data in user
     user = crud.get_user_by_email(email)
 
+    # Checks if a user account has been found in the database
     if user:
+        # If so, flash a message that the email already exists
         flash('Email Already Exists.')
         return redirect('/signup')
-    else:
 
+    # Otherwise add a new user and their interest to the database
+    else:
         new_user = crud.create_user(fname, lname, email, address, city, zip_code, phone, pref_communication,
                                     print_permissions, member_type, password, other_orgs, num_of_gsd, num_breedings)
 
         crud.create_user_interest(new_user.user_id, obedience, rally, conformation, agility, herding, scentwork,
-                                  fun_match, shep_o_gram,
-                                  training, hospitality, fundraising, gsd_fun_day, demo_mn_fair, annual_banquet,
-                                  breeding, other)
+                                  fun_match, shep_o_gram,training, hospitality, fundraising, gsd_fun_day, demo_mn_fair,
+                                  annual_banquet, breeding, other)
 
         flash('Membership Application Submitted.')
 
@@ -105,52 +119,56 @@ def search_user_by_name():
     return render_template('search.html', user=user)
 
 
-# @app.route('/interest', methods=["GET", "POST"])
-# def search_user_interest():
-#     """Takes in a request from Search.html and returns results"""
-#
-#     # Takes in the search input
-#     user_input = request.form.get('memberInput')
-#
-#     # Queries the users input against the database
-#     user = crud.get_user_interest(user_input)
-#
-#     # Passes the query results back to Search.html
-#     return render_template('interest.html', user=user)
+@app.route('/interest', methods=["GET", "POST"])
+def search_user_interest():
+    """Takes in a request from Search.html and returns results"""
+
+    # Takes in the search input
+    user_input = request.form.get('memberInput')
+
+    # Queries the users input against the database
+    test = crud.get_user_interest(user_input)
+
+    # Passes the query results back to Search.html
+    return render_template('interest.html', test=test)
+
+
+@app.route('/login_landing')
+@login_required
+def login_landing():
+
+    return render_template('login_landing.html', name=current_user.fname)
 
 
 @app.route('/login')
-def login_page():
+def login():
+
     return render_template('login.html')
 
 
-@app.route('/login', methods=["GET", "POST"])
-def login_check():
-    """Renders Login Page"""
+@app.route('/login', methods=['POST'])
+def login_post():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    remember = True if request.form.get('remember') else False
 
-    email = request.form.get('user_email')
-    print(email)
-    password = request.form.get('user_pass')
-    print(password)
+    user = crud.get_user_by_email(email)
 
-    try:
-        user = crud.get_user_by_email(email)
-        if password == user.password:
-            session['email'] = email
-            flash('Successful Login')
-        else:
-            flash('Password Incorrect')
-            return redirect('/login')
-    except AttributeError:
-        flash('Email not found')
-        return redirect('/login')
-    return render_template('login_landing.html')
+    if not user and not check_password_hash(user.password, password):
+        flash('Invalid Username or Password')
+        return redirect('login.html')
+
+    # Creates a session for the user that is logged in
+    login_user(user)
+
+    return redirect('login_landing.html')
 
 
-# @app.route('/logout', methods=["POST"])
-# def login_out():
-#
-#     return redirect('/')
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect('/login')
 
 
 if __name__ == '__main__':
