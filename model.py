@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_login import UserMixin
 db = SQLAlchemy()
 
 
@@ -14,7 +14,7 @@ def connect_to_db(flask_app):
     print('Connected to the db!')
 
 
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     """Data Model for a User"""
 
     # Creates a table of users
@@ -37,6 +37,9 @@ class Users(db.Model):
     other_orgs = db.Column(db.Text)
     num_of_gsd = db.Column(db.Integer)
     num_breedings = db.Column(db.Integer)
+
+    def get_id(self):
+        return self.user_id
 
     # app_date = db.Column(Date)
     # # co_app_fname = db.Column(db.String(50))
