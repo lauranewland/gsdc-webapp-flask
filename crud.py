@@ -1,11 +1,13 @@
 from model import Users, Interest, db, connect_to_db
+from werkzeug.security import generate_password_hash
 
 
 def create_user(fname, lname, email, address, city, zip_code, phone, pref_communication, print_permissions,
                 member_type, password, other_orgs, num_of_gsd, num_breedings):
     user = Users(fname=fname, lname=lname, email=email, address=address, city=city, zip_code=zip_code, phone=phone,
                  pref_communication=pref_communication, print_permissions=print_permissions, member_type=member_type,
-                 password=password, other_orgs=other_orgs, num_of_gsd=num_of_gsd, num_breedings=num_breedings)
+                 password=generate_password_hash(password, method='sha256'), other_orgs=other_orgs,
+                 num_of_gsd=num_of_gsd, num_breedings=num_breedings)
 
     # Adds user interest to the database session
     db.session.add(user)
@@ -57,19 +59,24 @@ def create_user_interest(user_id, obedience, rally, conformation, agility, herdi
     return interest
 
 
-# def get_user_interest(interest_input):
-#     """Queries an interest and returns members associated with it"""
-#
-#     query = ("SELECT fname, lname, email FROM users WHERE user_id IN "
-#              "(SELECT user_id FROM interests WHERE interest_input = true)")
-#
-#     # Executes the Query
-#     db_cursor = db.session.execute(query, {'interest_input': interest_input})
-#
-#     # Retrieves all data from the query
-#     full_query = db_cursor.fetchall()
-#
-#     return full_query
+def get_user_interest(user_input):
+    """Queries an interest and returns members associated with it"""
+
+    if user_input is None:
+        """User_input is going to be nothing when the page first renders 
+            this statement returns an empty list"""
+        return []
+    else:
+        query = ("SELECT fname, lname, email FROM users WHERE user_id IN "
+             f"(SELECT user_id FROM interests WHERE {user_input} = true)")
+
+        # Executes the Query
+        db_cursor = db.session.execute(query)
+
+    # Retrieves all data from the query
+    # full_query = db_cursor.fetchall()
+
+    return db_cursor.fetchall()
 
 
 if __name__ == '__main__':
