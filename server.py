@@ -133,35 +133,50 @@ def search_user_interest():
     return render_template('interest.html', test=test)
 
 
-@app.route('/login_landing')
-@login_required
-def login_landing():
-
-    return render_template('login_landing.html', name=current_user.fname)
-
-
 @app.route('/login')
 def login():
 
     return render_template('login.html')
 
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login_post():
+    """Takes in Users input and checks password & email matches the user in the database
+        If a match, a user login session is created and the user is routed to the login_landing page"""
+
+    # Takes in the users input
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
 
-    user = crud.get_user_by_email(email)
+    try:
+        # Queries database on the email address and stores all data in user
+        user = crud.get_user_by_email(email)
+        # Checks if password and email the user input matches the database
+        if check_password_hash(user.password, password):
+            # Creates Session for the logged in user
+            login_user(user)
+            flash('Successful Login')
 
-    if not user and not check_password_hash(user.password, password):
-        flash('Invalid Username or Password')
-        return redirect('login.html')
+        # If users password does not match flash message
+        else:
+            flash('Password Incorrect')
+            return redirect('/login')
 
-    # Creates a session for the user that is logged in
-    login_user(user)
+    # If users email does not match flash message
+    except AttributeError:
+        flash('Email not found')
+        return redirect('/login')
 
-    return redirect('login_landing.html')
+    # Renders the login_landing page and passes the logged in users first name
+    return render_template('login_landing.html', name=current_user.fname)
+
+
+@app.route('/login_landing')
+@login_required
+def login_landing():
+
+    return render_template('login_landing.html', name=current_user.fname)
 
 
 @app.route('/logout')
