@@ -1,0 +1,50 @@
+/* Login.html */
+.imgcontainer {
+    text-align: center;
+    margin: 30px 0 12px 0;
+}
+
+img.avatar {
+    width: 45%;
+    border-radius: 20%;
+}
+
+.loginform{
+    border: 3px solid #f1f1f1;
+}
+
+.loginbtn {
+    background-color: #7ef29d;
+    color: black;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;;
+    cursor: pointer;
+    width: 100%;
+}
+
+.loginbtn:hover {
+    opacity: .5;
+}
+
+input[type=text], input[type=password] {
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin: 10px 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.logincontainer {
+    padding: 16px;
+}
+
+span.upassword {
+    float: right;
+    padding-top: 16px;
+}
+
+.loginhead {
+    text_align: center;
+}
