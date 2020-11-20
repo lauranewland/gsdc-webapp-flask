@@ -11,6 +11,7 @@ th, td {
     padding: 15px;
 }
 
+/* Dark Mode */
 body.dark-theme {
   color: #eee;
   background: #121212;
@@ -18,23 +19,4 @@ body.dark-theme {
 
 body.dark-theme a {
   color: #809fff;
-}
-
-.login_img {
-    text-align: left;
-    margin: 24px 0 12px 0;
-}
-
-.login_pic {
-    width: 20%;
-    border-radius: 30%;
-}
-
-.login_form{
-    border: 3px solid #f1f1f1;
-}
-
-login_btn:hover {
-    opacity: .1;
-
 }
