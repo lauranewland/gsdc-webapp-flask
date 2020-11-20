@@ -2,30 +2,35 @@
 {% block title %}Create User{% endblock %}
 {% block body %}
 
+    <style>
+        body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #285433;
+        }
+        form {border: 3px solid #f1f1f1;}
+    </style>
 
-    <h2>GSDC Login</h2>
+    <h2 class="loginhead">GSDC Directory Login</h2>
 
-    <form action="/login" method="POST" class="login_form">
-    <div class="login_img">
-        <img src="/static/images/login_img1.jpg" class="login_pic">
-    </div>
-    <div class="login_container">
-        <label><b>Username</b></label>
-        <br>
-        <input type="text" placeholder="Enter Email Address" name="email" required>
-        <br>
-        <br>
-        <label><b>Password</b></label>
-        <br>
-        <input type="text" type="password" placeholder="Enter Password" name="password" required>
+    <form action="/login" method="POST" class="loginform">
+        <div class="imgcontainer">
+            <img src="/static/images/login_img1.jpg" class="avatar">
+        </div>
 
-        <button type="submit" name="login_btn">Login</button>
-        <br>
-        <br>
-        <label>
-            <input type="checkbox" name="remember"> Remember Me</input>
-        </label>
-    </div>
+        <div class="logincontainer">
+
+            <label for="useremail"><b>Username</b></label>
+            <input type="text" placeholder="Enter Email Address" name="useremail" required>
+
+            <label for="upassword"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="upassword" required>
+
+            <button class="loginbtn" type="submit">Login</button>
+
+            <label>
+                <input type="checkbox" name="remember"> Remember Me</input>
+            </label>
+        </div>
 
     </form>
 
