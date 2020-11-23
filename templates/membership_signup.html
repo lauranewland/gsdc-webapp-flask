@@ -1,62 +1,75 @@
 {% extends 'base.html' %}
 {% block title %}Create User{% endblock %}
 {% block body %}
-    <h1>German Shepherd Dog Club of Minneapolis & St. Paul</h1>
+    <h2>German Shepherd Dog Club of Minneapolis & St. Paul</h2>
 
-    <h2>Membership Application Form</h2>
-        <form action="/users" method="POST">
-            <p>First Name <input type="text" name="fname"></p>
-            <p>Last Name <input type="text" name="lname"></p>
-            <p>Email <input type="text" name="email"></p>
+    <h3>Membership Application Form</h3>
+        <form  action="/users" method="POST">
+            <div class="container1 custom-control-inline">
+                <p class="p1">First Name: <input class="form-control" type="text" name="fname"></p>
+                <p class="p1">Last Name: <input class="form-control" type="text" name="lname"></p>
+            </div>
+            <br>
+            <div class="container1 custom-control-inline">
+                <p class="p1">Email: <input class="form-control" type="text" name="email"></p>
+                <p class="p1">Password <input class="form-control" type="text" name="password"></p>
+            </div>
+            <br>
+            <div class="container2 custom-control-inline">
+                <p class="p2">Address: <input class="form-control" type="text" name="address"></p>
+            </div>
+            <br>
+            <div class="container1 custom-control-inline">
+                <p class="p3">City: <input class="form-control" type="text" name="city"></p>
+                <p class="p3">Zip Code: <input class="form-control" type="text" name="zip_code"></p>
+                <p class="p3">Phone: <input class="form-control" type="text" name="phone"></p>
+            </div>
+            <div class="container4">
+                <p>What type of Membership are you signing up for?
+                    <select name="member_type">
+                        <option value="single">Single Membership</option>
+                        <option value="household">Household Membership</option>
+                        <option value="junior">Junior Membership</option>
+                        <option value="updates">Membership Updates Only</option>
+                    </select>
+                </p>
+                <p>What is your Preferred Communication?
+                    <select name="pref_communication">
+                        <option value="email">Email</option>
+                        <option value="snail mail">Snail Mail</option>
+                    </select>
+                </p>
+                <p>I give the GSDCMSP permission to print my Email, Phone, Address information at the
+                    annual banquet for club purposes only
+                    <select name="print_permissions">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </p>
+                <p>Do you belong to any other Organizations? <input type="text" name="other_orgs"></p>
+                <p>How many German Shepherds do you own? <input type="text" name="num_of_gsd"></p>
+                <p>How many breedings have you done? <input type="text" name="num_breedings"></p>
+            </div>
 
-    <!--        This will be implemented later date-->
-            <p>address <input type="text" name="address"></p>
-            <p>city <input type="text" name="city"></p>
-            <p>zip_code <input type="text" name="zip_code"></p>
-            <p>phone <input type="text" name="phone"></p>
-            <p>member_type
-                <select name="member_type">
-                    <option value="single">Single Membership</option>
-                    <option value="household">Household Membership</option>
-                    <option value="junior">Junior Membership</option>
-                    <option value="updates">Membership Updates Only</option>
-                </select>
-            </p>
-            <p>pref_communication
-                <select name="pref_communication">
-                    <option value="email">Email</option>
-                    <option value="snail mail">Snail Mail</option>
-                </select>
-            </p>
-            <p>print_permissions
-                <select name="print_permissions">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </select>
-            </p>
-            <p>password <input type="text" name="password"></p>
-            <p>other_orgs <input type="text" name="other_orgs"></p>
-            <p>num_of_gsd <input type="text" name="num_of_gsd"></p>
-            <p>num_breedings <input type="text" name="num_breedings"></p>
-
-        <h2>What Club Interests do you have?</h2>
-            <p>obedience <input type="checkbox" name="obedience" value="true"></p>
-            <p>rally <input type="checkbox" name="rally" value="true"></p>
-            <p>conformation <input type="checkbox" name="conformation" value="true"></p>
-            <p>agility <input type="checkbox" name="agility" value="true"></p>
-            <p>herding <input type="checkbox" name="herding" value="true"></p>
-            <p>scentwork <input type="checkbox" name="scentwork" value="true"></p>
-            <p>fun_match <input type="checkbox" name="fun_match" value="true"></p>
-            <p>shep_o_gram <input type="checkbox" name="shep_o_gram" value="true"></p>
-            <p>training <input type="checkbox" name="training" value="true"></p>
-            <p>hospitality <input type="checkbox" name="hospitality" value="true"></p>
-            <p>fundraising <input type="checkbox" name="fundraising" value="true"></p>
-            <p>gsd_fun_day <input type="checkbox" name="gsd_fun_day" value="true"></p>
-            <p>demo_mn_fair <input type="checkbox" name="demo_mn_fair" value="true"></p>
-            <p>annual_banquet <input type="checkbox" name="annual_banquet" value="true"></p>
-            <p>breeding <input type="checkbox" name="breeding" value="true"></p>
-            <p>other <input type="text" name="other"></p>
-
+            <h2>What Club Interests do you have?</h2>
+            <div class="container3">
+                <p><input type="checkbox" name="obedience" value="true"> Obedience</p>
+                <p><input type="checkbox" name="rally" value="true"> Rally</p>
+                <p><input type="checkbox" name="conformation" value="true"> Conformation</p>
+                <p><input type="checkbox" name="agility" value="true"> Agility</p>
+                <p><input type="checkbox" name="herding" value="true"> Herding</p>
+                <p><input type="checkbox" name="scentwork" value="true"> Scentwork</p>
+                <p><input type="checkbox" name="fun_match" value="true"> GSD Fun Match</p>
+                <p><input type="checkbox" name="shep_o_gram" value="true"> Shep O Gram </p>
+                <p><input type="checkbox" name="training" value="true"> Training</p>
+                <p><input type="checkbox" name="hospitality" value="true"> Hospitality</p>
+                <p><input type="checkbox" name="fundraising" value="true"> Fundraising</p>
+                <p><input type="checkbox" name="gsd_fun_day" value="true"> GSD Fun Day</p>
+                <p><input type="checkbox" name="demo_mn_fair" value="true"> Demo Day at the MN Fair</p>
+                <p><input type="checkbox" name="annual_banquet" value="true"> Annual Banquet</p>
+                <p><input type="checkbox" name="breeding" value="true"> Breeding</p>
+                <p>Other <input type="text" name="other"></p>
+            </div>
         <p><input type="submit"></p>
     </form>
 {% endblock %}
