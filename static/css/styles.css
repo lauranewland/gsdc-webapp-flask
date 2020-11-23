@@ -20,3 +20,39 @@ body.dark-theme {
 body.dark-theme a {
   color: #809fff;
 }
+
+.p1 {
+    padding: 12px 20px;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-left: .80%;
+    margin-right: .80%;
+    width: 50%;
+}
+.p2 {
+    padding: 12px 20px;
+
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-left: .80%;
+    margin-right: .80%;
+    width: 50%;
+}
+.p3 {
+    padding: 12px 20px;
+
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-left: .80%;
+    margin-right: .80%;
+    width: 50%;
+}
+.container1 {
+    width: 100%
+}
+.container2 {
+    width: 97%
+}
