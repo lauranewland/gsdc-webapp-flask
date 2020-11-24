@@ -127,10 +127,10 @@ def search_user_interest():
     user_input = request.form.get('memberInput')
 
     # Queries the users input against the database
-    test = crud.get_user_interest(user_input)
+    intresults = crud.get_user_interest(user_input)
 
     # Passes the query results back to Search.html
-    return render_template('interest.html', test=test)
+    return render_template('interest.html', intresults=intresults)
 
 
 @app.route('/login')
@@ -145,17 +145,20 @@ def login_post():
         If a match, a user login session is created and the user is routed to the login_landing page"""
 
     # Takes in the users input
-    email = request.form.get('email')
-    password = request.form.get('password')
+    email = request.form.get('useremail')
+    print(email)
+    password = request.form.get('upassword')
+    print(password)
     remember = True if request.form.get('remember') else False
 
     try:
         # Queries database on the email address and stores all data in user
         user = crud.get_user_by_email(email)
+        print(user)
         # Checks if password and email the user input matches the database
         if check_password_hash(user.password, password):
             # Creates Session for the logged in user
-            login_user(user)
+            login_user(user, remember=remember)
             flash('Successful Login')
 
         # If users password does not match flash message
