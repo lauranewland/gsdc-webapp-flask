@@ -158,6 +158,8 @@ def login_post():
     print(password)
     remember = True if request.form.get('remember') else False
 
+    # Sets the users variable to an empty list to be a place holder for the login_landing page
+    users = []
     try:
         # Queries database on the email address and stores all data in user
         user = crud.get_user_by_email(email)
@@ -179,7 +181,7 @@ def login_post():
         return redirect('/login')
 
     # Renders the login_landing page and passes the logged in users first name
-    return render_template('login_landing.html', name=current_user.fname)
+    return render_template('login_landing.html', name=current_user.fname, users=users)
 
 
 @app.route('/login_landing', methods=['GET', 'POST'])
@@ -189,15 +191,15 @@ def login_landing():
     user_input = request.form.get('meminput')
     print(user_input)
 
-    user = crud.get_user_interest(user_input)
-    print(user)
+    users = crud.get_user_interest(user_input)
+    print(users)
 
-    if len(user) != 0:
-        return render_template('login_landing.html', name=current_user.fname, user=user)
+    if len(users) != 0:
+        return render_template('login_landing.html', name=current_user.fname, users=users)
     else:
-        user = crud.get_user(user_input)
-        print(user)
-        return render_template('login_landing.html', name=current_user.fname, user=user)
+        users = crud.get_user(user_input)
+        print(users)
+        return render_template('login_landing.html', name=current_user.fname, users=users)
 
 
 @app.route('/logout')
