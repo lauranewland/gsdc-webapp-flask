@@ -71,14 +71,14 @@ def get_user_interest(user_input):
                 this statement returns an empty list"""
             return []
         else:
-            query = ("SELECT fname, lname, email FROM users WHERE user_id IN "
+            query = ("SELECT * FROM users WHERE user_id IN "
                  f"(SELECT user_id FROM interests WHERE {user_input} = true)")
 
             # Executes the Query
             db_cursor = db.session.execute(query)
             return db_cursor.fetchall()
     except sqlalchemy.exc.OperationalError:
-        flash('Interest Not found')
+
         return []
 
 
