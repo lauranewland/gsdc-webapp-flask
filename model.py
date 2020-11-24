@@ -30,7 +30,7 @@ class Users(db.Model, UserMixin):
     zip_code = db.Column(db.String(10), nullable=True)
     phone = db.Column(db.String(15), nullable=True)
     pref_communication = db.Column(db.String(50), nullable=True)
-    print_permissions = db.Column(db.Boolean, nullable=True)
+    print_permissions = db.Column(db.String(5), nullable=True)
     password = db.Column(db.String(50), nullable=True)
     member_type = db.Column(db.String(100), nullable=True)
     member_standing = db.Column(db.String(25), default='Good')
