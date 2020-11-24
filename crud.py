@@ -40,6 +40,11 @@ def get_user(user_input):
     return Users.query.filter(Users.fname == user_input).all()
 
 
+def get_user_last(user_input):
+    """Queries and returns a user"""
+    return Users.query.filter(Users.lname == user_input).all()
+
+
 def create_user_interest(user_id, obedience, rally, conformation, agility, herding, scentwork, fun_match, shep_o_gram,
                          training, hospitality, fundraising, gsd_fun_day, demo_mn_fair,
                          annual_banquet, breeding, other):
