@@ -1,22 +1,31 @@
-table, th, td {
+body {
+    background-color: #eff0f3;
+}
+.table {
     width="100%";
     cellspacing="0";
     cellpadding="0";
     border="0";
     border: 1px solid black;
     border-collapse: collapse;
+    /*display: none;*/
 }
 
 th, td {
+    width="100%";
+    cellspacing="0";
+    cellpadding="0";
+    border="0";
+    border: 1px solid black;
+    border-collapse: collapse;
     padding: 15px;
 }
 
 /* Dark Mode */
 body.dark-theme {
   color: #eee;
-  background: #121212;
+  background: #0f0e17;
 }
-
 body.dark-theme a {
   color: #809fff;
 }
@@ -55,4 +64,11 @@ body.dark-theme a {
 }
 .container2 {
     width: 97%
+}
+.loginhead {
+    text-align: center;
+    margin-top: 10px;
+}
+.navbar-nav {
+    padding-left: 70%;
 }
