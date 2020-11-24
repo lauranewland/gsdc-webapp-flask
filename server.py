@@ -45,7 +45,7 @@ def register_user():
     zip_code = request.form.get('zip_code')
     phone = request.form.get('phone')
     pref_communication = request.form.get('pref_communication')
-    print_permissions = bool(request.form.get('print_permissions'))
+    print_permissions = request.form.get('print_permissions')
     member_type = request.form.get('member_type')
     password = request.form.get('password')
     other_orgs = request.form.get('other_orgs')
