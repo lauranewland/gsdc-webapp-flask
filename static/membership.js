@@ -1,15 +1,21 @@
 'use strict';
 
-// Dark-Mode
-const btn = document.querySelector('.btn-toggle');
+//Dark-Mode
+//const btn = document.querySelector('.btn-toggle');
+//
+//btn.addEventListener('click', () => {
+//    document.body.classList.toggle('dark-theme');
+//});
 
-btn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-});
 
 // Display search form when button is clicked
-//$(document).ready(function() {
-//    $('.search-btn').click(function() {
-//        $('.form1').toggle();
-//    });
-//});
+$(document).ready(function(){
+    $("#visibility").css("display", "none");
+
+    $("#search-btn").click(function() {
+        alert("Yep")
+        $("#visibility").css("display", "block");
+    });
+});
+
+
