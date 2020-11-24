@@ -114,9 +114,14 @@ def search_user_by_name():
 
     # Queries the users input against the database
     user = crud.get_user(user_input)
+    print(user)
 
-    # Passes the query results back to Search.html
-    return render_template('search.html', user=user)
+    if len(user) == 0:
+        flash('No User Found')
+        return render_template('search.html', user=user)
+    else:
+        # Passes the query results back to Search.html
+        return render_template('search.html', user=user)
 
 
 @app.route('/interest', methods=["GET", "POST"])
@@ -125,9 +130,11 @@ def search_user_interest():
 
     # Takes in the search input
     user_input = request.form.get('memberInput')
+    print(user_input)
 
     # Queries the users input against the database
     intresults = crud.get_user_interest(user_input)
+    print(intresults)
 
     # Passes the query results back to Search.html
     return render_template('interest.html', intresults=intresults)
