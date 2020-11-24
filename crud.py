@@ -37,12 +37,16 @@ def get_all_users():
 
 def get_user(user_input):
     """Queries and returns a user"""
-    return Users.query.filter(Users.fname == user_input).all()
-
-
-def get_user_last(user_input):
-    """Queries and returns a user"""
-    return Users.query.filter(Users.lname == user_input).all()
+    return Users.query.filter((Users.fname == user_input) | (Users.lname == user_input)
+                              | (Users.email == user_input)
+                              | (Users.city == user_input)
+                              | (Users.phone == user_input)
+                              | (Users.pref_communication == user_input)
+                              | (Users.print_permissions == user_input)
+                              | (Users.member_type == user_input)
+                              | (Users.other_orgs == user_input)
+                              | (Users.num_of_gsd == user_input)
+                              | (Users.num_breedings == user_input)).all()
 
 
 def create_user_interest(user_id, obedience, rally, conformation, agility, herding, scentwork, fun_match, shep_o_gram,
@@ -81,7 +85,10 @@ def get_user_interest(user_input):
 
             # Executes the Query
             db_cursor = db.session.execute(query)
+
             return db_cursor.fetchall()
+
+    # an Operational error is given when a column is not found, if that is the case return an empty list
     except sqlalchemy.exc.OperationalError:
 
         return []
