@@ -1,3 +1,6 @@
+import sqlalchemy
+from flask import flash
+
 from model import Users, Interest, db, connect_to_db
 from werkzeug.security import generate_password_hash
 
@@ -62,21 +65,21 @@ def create_user_interest(user_id, obedience, rally, conformation, agility, herdi
 def get_user_interest(user_input):
     """Queries an interest and returns members associated with it"""
 
-    if user_input is None:
-        """User_input is going to be nothing when the page first renders 
-            this statement returns an empty list"""
+    try:
+        if user_input is None:
+            """User_input is going to be nothing when the page first renders 
+                this statement returns an empty list"""
+            return []
+        else:
+            query = ("SELECT fname, lname, email FROM users WHERE user_id IN "
+                 f"(SELECT user_id FROM interests WHERE {user_input} = true)")
+
+            # Executes the Query
+            db_cursor = db.session.execute(query)
+            return db_cursor.fetchall()
+    except sqlalchemy.exc.OperationalError:
+        flash('Interest Not found')
         return []
-    else:
-        query = ("SELECT fname, lname, email FROM users WHERE user_id IN "
-             f"(SELECT user_id FROM interests WHERE {user_input} = true)")
-
-        # Executes the Query
-        db_cursor = db.session.execute(query)
-
-    # Retrieves all data from the query
-    # full_query = db_cursor.fetchall()
-
-    return db_cursor.fetchall()
 
 
 if __name__ == '__main__':
