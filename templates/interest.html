@@ -4,21 +4,21 @@
     <h1>Membership Directory Search</h1>
 
         <form action="/interest" method="POST" autocomplete="on" >
-            <p>Search <input type="text" name="memberInput"></p>
+            <p>Search <input type="text" name="memberInput">
+            <button class="search-btn" type="submit">Submit</button>
         </form>
-        <table>
+
+        <table class="table table-striped">
           <tr>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
-
           </tr>
-            {% for u in test %}
+            {% for u in intresults %}
           <tr>
               <td>{{ u.fname }}</td>
               <td>{{ u.lname }}</th>
               <td>{{ u.email }}</td>
-
           </tr>
             {% endfor %}
          </table>

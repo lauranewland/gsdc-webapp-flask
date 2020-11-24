@@ -4,42 +4,47 @@
     <h1>Membership Directory Search</h1>
 
         <form action="/search" method="POST" autocomplete="on" >
-            <p>Search <input type="text" name="memberInput"></p>
+            <p>Search <input type="text" name="memberInput">
+            <button class="search-btn" type="submit">Submit</button>
+          </p>
         </form>
-        <table>
-          <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>City</th>
-              <th>Zip Code</th>
-              <th>Phone</th>
-              <th>Pref Comms</th>
-              <th>Print Permissions</th>
-              <th>Member Type</th>
-              <th>Other Orgs</th>
-              <th># of GSDs</th>
-              <th># of Breedings</th>
-          </tr>
-            {% for u in user %}
-          <tr>
-              <td>{{ u.fname }}</td>
-              <td>{{ u.lname }}</th>
-              <td>{{ u.email }}</td>
-              <td>{{ u.address }}</td>
-              <td>{{ u.city }}</td>
-              <td>{{ u.zip_code }}</td>
-              <td>{{ u.phone }}</td>
-              <td>{{ u.pref_communication }}</td>
-              <td>{{ u.print_permissions }}</td>
-              <td>{{ u.member_type }}</td>
-              <td>{{ u.other_orgs }}</td>
-              <td>{{ u.num_of_gsd }}</td>
-              <td>{{ u.num_breedings }}</td>
-          </tr>
-            {% endfor %}
-         </table>
+
+        <form class="form1">
+            <table class="table table-striped">
+              <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>Zip Code</th>
+                  <th>Phone</th>
+                  <th>Pref Comms</th>
+                  <th>Print Permissions</th>
+                  <th>Member Type</th>
+                  <th>Other Orgs</th>
+                  <th># of GSDs</th>
+                  <th># of Breedings</th>
+              </tr>
+                {% for u in user %}
+              <tr>
+                  <td>{{ u.fname }}</td>
+                  <td>{{ u.lname }}</th>
+                  <td>{{ u.email }}</td>
+                  <td>{{ u.address }}</td>
+                  <td>{{ u.city }}</td>
+                  <td>{{ u.zip_code }}</td>
+                  <td>{{ u.phone }}</td>
+                  <td>{{ u.pref_communication }}</td>
+                  <td>{{ u.print_permissions }}</td>
+                  <td>{{ u.member_type }}</td>
+                  <td>{{ u.other_orgs }}</td>
+                  <td>{{ u.num_of_gsd }}</td>
+                  <td>{{ u.num_breedings }}</td>
+              </tr>
+                {% endfor %}
+             </table>
+        </form>
 <br>
 <br>
 <footer><a href="/login_landing">Back to Landing Page</a> </footer>
