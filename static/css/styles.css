@@ -1,5 +1,6 @@
 body {
     background-color: #eff0f3;
+    margin: 15px;
 }
 .table {
     width="100%";
@@ -8,7 +9,6 @@ body {
     border="0";
     border: 1px solid black;
     border-collapse: collapse;
-    /*display: none;*/
 }
 
 th, td {
@@ -72,3 +72,4 @@ body.dark-theme a {
 .navbar-nav {
     padding-left: 70%;
 }
+
