@@ -182,11 +182,22 @@ def login_post():
     return render_template('login_landing.html', name=current_user.fname)
 
 
-@app.route('/login_landing')
+@app.route('/login_landing', methods=['GET', 'POST'])
 @login_required
 def login_landing():
 
-    return render_template('login_landing.html', name=current_user.fname)
+    user_input = request.form.get('meminput')
+    print(user_input)
+
+    user = crud.get_user_interest(user_input)
+    print(user)
+
+    if len(user) != 0:
+        return render_template('login_landing.html', name=current_user.fname, user=user)
+    else:
+        user = crud.get_user(user_input)
+        print(user)
+        return render_template('login_landing.html', name=current_user.fname, user=user)
 
 
 @app.route('/logout')
