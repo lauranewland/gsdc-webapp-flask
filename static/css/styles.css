@@ -1,6 +1,8 @@
 body {
     background-color: #eff0f3;
-    margin: 15px;
+}
+a {
+color: #0033cc;
 }
 .table {
     width="100%";
@@ -10,7 +12,6 @@ body {
     border: 1px solid black;
     border-collapse: collapse;
 }
-
 th, td {
     width="100%";
     cellspacing="0";
@@ -23,11 +24,12 @@ th, td {
 
 /* Dark Mode */
 body.dark-theme {
-  color: #eee;
-  background: #0f0e17;
+    color: #eee;
+    background: #121212;
 }
+
 body.dark-theme a {
-  color: #809fff;
+    color: #809fff;
 }
 
 .p1 {
@@ -69,7 +71,15 @@ body.dark-theme a {
     text-align: center;
     margin-top: 10px;
 }
-.navbar-nav {
-    padding-left: 70%;
+
+.calendar {
+    text-align: center;
+}
+h1 {
+    text-align: center;
+    margin-top: 10px;
 }
 
+.btn-toggle {
+    margin-right: 5px;
+}
