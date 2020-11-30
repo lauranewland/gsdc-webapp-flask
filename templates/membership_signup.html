@@ -6,25 +6,16 @@
     <h3>Membership Application Form</h3>
         <form  action="/users" method="POST">
             <div class="container1 custom-control-inline">
-                <p class="p1">First Name: <input class="form-control" type="text" name="fname"></p>
-                <p class="p1">Last Name: <input class="form-control" type="text" name="lname"></p>
+                First Name: <input class="form-control" type="text" name="fname">
+                Last Name: <input class="form-control" type="text" name="lname">
+                Email: <input class="form-control" type="text" name="email">
+                Password <input class="form-control" type="text" name="password">
+                Address: <input class="form-control" type="text" name="address">
+                City: <input class="form-control" type="text" name="city">
+                Zip Code: <input class="form-control" type="text" name="zip_code">
+                Phone: <input class="form-control" type="text" name="phone">
             </div>
-            <br>
-            <div class="container1 custom-control-inline">
-                <p class="p1">Email: <input class="form-control" type="text" name="email"></p>
-                <p class="p1">Password <input class="form-control" type="text" name="password"></p>
-            </div>
-            <br>
             <div class="container2 custom-control-inline">
-                <p class="p2">Address: <input class="form-control" type="text" name="address"></p>
-            </div>
-            <br>
-            <div class="container1 custom-control-inline">
-                <p class="p3">City: <input class="form-control" type="text" name="city"></p>
-                <p class="p3">Zip Code: <input class="form-control" type="text" name="zip_code"></p>
-                <p class="p3">Phone: <input class="form-control" type="text" name="phone"></p>
-            </div>
-            <div class="container4">
                 <p>What type of Membership are you signing up for?
                     <select name="member_type">
                         <option value="single">Single Membership</option>
@@ -51,25 +42,30 @@
                 <p>How many breedings have you done? <input type="text" name="num_breedings"></p>
             </div>
 
-            <h2>What Club Interests do you have?</h2>
-            <div class="container3">
-                <p><input type="checkbox" name="obedience" value="true"> Obedience</p>
-                <p><input type="checkbox" name="rally" value="true"> Rally</p>
-                <p><input type="checkbox" name="conformation" value="true"> Conformation</p>
-                <p><input type="checkbox" name="agility" value="true"> Agility</p>
-                <p><input type="checkbox" name="herding" value="true"> Herding</p>
-                <p><input type="checkbox" name="scentwork" value="true"> Scentwork</p>
-                <p><input type="checkbox" name="fun_match" value="true"> GSD Fun Match</p>
-                <p><input type="checkbox" name="shep_o_gram" value="true"> Shep O Gram </p>
-                <p><input type="checkbox" name="training" value="true"> Training</p>
-                <p><input type="checkbox" name="hospitality" value="true"> Hospitality</p>
-                <p><input type="checkbox" name="fundraising" value="true"> Fundraising</p>
-                <p><input type="checkbox" name="gsd_fun_day" value="true"> GSD Fun Day</p>
-                <p><input type="checkbox" name="demo_mn_fair" value="true"> Demo Day at the MN Fair</p>
-                <p><input type="checkbox" name="annual_banquet" value="true"> Annual Banquet</p>
-                <p><input type="checkbox" name="breeding" value="true"> Breeding</p>
-                <p>Other <input type="text" name="other"></p>
+            <h3>What Club Interests do you have?</h3>
+            <div class="container3 custom-control-inline">
+                <p>
+                    <input type="checkbox" name="obedience" value="true"> Obedience <br>
+                    <input type="checkbox" name="rally" value="true"> Rally <br>
+                    <input type="checkbox" name="conformation" value="true"> Conformation <br>
+                    <input type="checkbox" name="agility" value="true"> Agility <br>
+                    <input type="checkbox" name="herding" value="true"> Herding <br>
+                    <input type="checkbox" name="scentwork" value="true"> Scentwork <br>
+                    <input type="checkbox" name="fun_match" value="true"> GSD Fun Match <br>
+                    <input type="checkbox" name="shep_o_gram" value="true"> Shep O Gram <br>
+                </p>
+                <p>
+                    <input type="checkbox" name="training" value="true"> Training <br>
+                    <input type="checkbox" name="hospitality" value="true"> Hospitality <br>
+                    <input type="checkbox" name="fundraising" value="true"> Fundraising <br>
+                    <input type="checkbox" name="gsd_fun_day" value="true"> GSD Fun Day <br>
+                    <input type="checkbox" name="demo_mn_fair" value="true"> Demo Day at the MN Fair <br>
+                    <input type="checkbox" name="annual_banquet" value="true"> Annual Banquet <br>
+                    <input type="checkbox" name="breeding" value="true"> Breeding <br>
+                    Other <input type="text" name="other"> <br>
+                </p>
             </div>
-        <p><button type="submit">Submit</button></p>
-    </form>
+            <button class="mebbtn" type="submit">Submit</button>
+        </form>
+
 {% endblock %}
