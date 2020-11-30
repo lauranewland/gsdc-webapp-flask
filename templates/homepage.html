@@ -1,12 +1,62 @@
 {% extends 'base.html' %}
 {% block title %}Create User{% endblock %}
 {% block body %}
+
+    <div class="carousel-ctr">
+        <div class="slide-ctr fade">
+            <div class="numtext">1 / 3</div>
+            <img src="/static/images/4P9A7099.jpg" style="width:100%">
+        </div>
+        <div class="slide-ctr fade">
+            <div class="numtext">2 / 3</div>
+            <img src="/static/images/928.jpg" style="width:100%">
+        </div>
+        <div class="slide-ctr fade">
+            <div class="numtext">3 / 3</div>
+            <img src="/static/images/IMG-4163.jpg" style="width:100%">
+        </div>
+
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+    </div>
+
+    <script>
+        var carouselIndex = 0;
+        displaySlides();
+
+        function displaySlides(){
+            var i;
+            var slides = document.getElementsByClassName("slide-ctr");
+            var dots = document.getElementsByClassName("dot");
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            carouselIndex++;
+
+            if (carouselIndex > slides.length) {carouselIndex = 1}
+
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "")
+            }
+
+            slides[carouselIndex-1].style.display = "block";
+            dots[carouselIndex-1].className += " active";
+            setTimeout(displaySlides, 5000);
+            }
+    </script>
+
+
+
     <h1>German Shepherd Dog Club of Minneapolis & St. Paul</h1>
         <ul>
             <li><a href="/signup">Membership Signup Form</a></li>
             <li><a href="/login">Login</a></li>
-
         </ul>
-
 
 {% endblock %}
