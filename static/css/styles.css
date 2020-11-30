@@ -1,5 +1,6 @@
 body {
     background-color: #eff0f3;
+    margin-right: 10px;
 }
 a {
 color: #0033cc;
@@ -62,10 +63,36 @@ body.dark-theme a {
     width: 50%;
 }
 .container1 {
-    width: 100%
+    width: 100%;
+    column-count: 2;
+    column-gap: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .container2 {
-    width: 97%
+    width: 100%;
+    column-count: 2;
+    column-gap: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.container3 {
+    width: 25%;
+    column-count: 2;
+    column-gap: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.mebbtn {
+    margin-left: 10px;
+}
+h3 {
+    margin-left: 10px;
+}
+h2 {
+    margin-left: 10px;
+    text-align: center;
 }
 .loginhead {
     text-align: center;
@@ -79,7 +106,10 @@ h1 {
     text-align: center;
     margin-top: 10px;
 }
-
 .btn-toggle {
     margin-right: 5px;
+}
+
+.membershipdiv {
+  margin-right: 5px;
 }
