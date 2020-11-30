@@ -4,54 +4,9 @@
 
     <h2>Welcome {{ name }}!!</h2>
 
-    <div>
-            <li><a href="/user">All Members</a></li>
-            <li><a href="/search">Membership Directory Search</a></li>
-            <li><a href="/interest">Search Member Interests</a></li>
+    <div class="calendar">
+        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FChicago&amp;src=YzZxcnNzNmI1ZTRxOGxiMTE0b3JmNjY5MG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=MTc5NHZ2MTMzMmhjMGUwNGNmMTNpM3UzZGdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Y2I5dWxtY3E1YXVzZGp0dGN0bWx1Y2VtMXNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%234285F4&amp;color=%23EF6C00&amp;color=%23B39DDB&amp;color=%23E4C441" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
     </div>
-
-
-        <form action="/login_landing" method="POST" autocomplete="on" >
-            <p>Search <input type="text" name="meminput">
-            <button class="search-btn" type="submit">Submit</button>
-        </form>
-
-        <table class="table table-striped">
-              <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Address</th>
-                  <th>City</th>
-                  <th>Zip Code</th>
-                  <th>Phone</th>
-                  <th>Pref Comms</th>
-                  <th>Print Permissions</th>
-                  <th>Member Type</th>
-                  <th>Other Orgs</th>
-                  <th># of GSDs</th>
-                  <th># of Breedings</th>
-              </tr>
-                {% for u in users %}
-              <tr>
-                  <td>{{ u.fname }}</td>
-                  <td>{{ u.lname }}</th>
-                  <td>{{ u.email }}</td>
-                  <td>{{ u.address }}</td>
-                  <td>{{ u.city }}</td>
-                  <td>{{ u.zip_code }}</td>
-                  <td>{{ u.phone }}</td>
-                  <td>{{ u.pref_communication }}</td>
-                  <td>{{ u.print_permissions }}</td>
-                  <td>{{ u.member_type }}</td>
-                  <td>{{ u.other_orgs }}</td>
-                  <td>{{ u.num_of_gsd }}</td>
-                  <td>{{ u.num_breedings }}</td>
-              </tr>
-                {% endfor %}
-             </table>
-
-
 
 
 {% endblock %}
