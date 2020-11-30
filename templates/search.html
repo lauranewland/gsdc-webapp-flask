@@ -5,14 +5,12 @@
 
     <h1>Membership Directory Search</h1>
 
-        <form action="/search" method="POST" autocomplete="on" >
-            <p>Search <input type="text" name="memberInput">
-            <button id="search-btn" type="submit">Submit</button>
-          </p>
+               <form action="/search" method="POST" autocomplete="on" >
+            <p>Search <input type="text" name="meminput">
+            <button class="search-btn" type="submit">Submit</button>
         </form>
 
-        <form id="visibility">
-            <table class="table table-striped">
+        <table class="table table-striped">
               <tr>
                   <th>First Name</th>
                   <th>Last Name</th>
@@ -28,25 +26,24 @@
                   <th># of GSDs</th>
                   <th># of Breedings</th>
               </tr>
-                {% for user in users %}
+                {% for u in users %}
               <tr>
-                  <td>{{ user.fname }}</td>
-                  <td>{{ user.lname }}</th>
-                  <td>{{ user.email }}</td>
-                  <td>{{ user.address }}</td>
-                  <td>{{ user.city }}</td>
-                  <td>{{ user.zip_code }}</td>
-                  <td>{{ user.phone }}</td>
-                  <td>{{ user.pref_communication }}</td>
-                  <td>{{ user.print_permissions }}</td>
-                  <td>{{ user.member_type }}</td>
-                  <td>{{ user.other_orgs }}</td>
-                  <td>{{ user.num_of_gsd }}</td>
-                  <td>{{ user.num_breedings }}</td>
+                  <td>{{ u.fname }}</td>
+                  <td>{{ u.lname }}</th>
+                  <td>{{ u.email }}</td>
+                  <td>{{ u.address }}</td>
+                  <td>{{ u.city }}</td>
+                  <td>{{ u.zip_code }}</td>
+                  <td>{{ u.phone }}</td>
+                  <td>{{ u.pref_communication }}</td>
+                  <td>{{ u.print_permissions }}</td>
+                  <td>{{ u.member_type }}</td>
+                  <td>{{ u.other_orgs }}</td>
+                  <td>{{ u.num_of_gsd }}</td>
+                  <td>{{ u.num_breedings }}</td>
               </tr>
                 {% endfor %}
-             </table>
-        </form>
+        </table>
 <br>
 <br>
 <footer><a href="/login_landing">Back to Landing Page</a> </footer>
