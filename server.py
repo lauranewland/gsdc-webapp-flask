@@ -5,11 +5,12 @@ from jinja2 import StrictUndefined
 import crud
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 
-# Creates an instance of the Flask
+# Creates an instance of Flask
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
+# Creates an instance of Flask LoginManager
 login_manager = LoginManager()
 login_manager.login_view = 'app.login'
 login_manager.init_app(app)
@@ -106,37 +107,22 @@ def all_users():
 
 
 @app.route('/search', methods=["GET", "POST"])
-def search_user_by_name():
+def search_database():
     """Takes in a request from Search.html and returns results"""
 
     # Takes in the search input
-    user_input = request.form.get('memberInput')
-
-    # Queries the users input against the database
-    users = crud.get_user(user_input)
-    print(users)
-
-    if len(users) == 0:
-        flash('No User Found')
-
-    # Passes the query results back to Search.html
-    return render_template('search.html', users=users)
-
-
-@app.route('/interest', methods=["GET", "POST"])
-def search_user_interest():
-    """Takes in a request from Search.html and returns results"""
-
-    # Takes in the search input
-    user_input = request.form.get('memberInput')
+    user_input = request.form.get('meminput')
     print(user_input)
 
-    # Queries the users input against the database
-    intresults = crud.get_user_interest(user_input)
-    print(intresults)
+    users = crud.get_user_interest(user_input)
+    print(users)
 
-    # Passes the query results back to Search.html
-    return render_template('interest.html', intresults=intresults)
+    if len(users) != 0:
+        return render_template('search.html', name=current_user.fname, users=users)
+    else:
+        users = crud.get_user(user_input)
+        print(users)
+        return render_template('search.html', name=current_user.fname, users=users)
 
 
 @app.route('/login')
@@ -183,22 +169,11 @@ def login_post():
     return render_template('login_landing.html', name=current_user.fname, users=users)
 
 
-@app.route('/login_landing', methods=['GET', 'POST'])
+@app.route('/login_landing')
 @login_required
 def login_landing():
-
-    user_input = request.form.get('meminput')
-    print(user_input)
-
-    users = crud.get_user_interest(user_input)
-    print(users)
-
-    if len(users) != 0:
-        return render_template('login_landing.html', name=current_user.fname, users=users)
-    else:
-        users = crud.get_user(user_input)
-        print(users)
-        return render_template('login_landing.html', name=current_user.fname, users=users)
+    """Renders Login Landing Page"""
+    return render_template('login_landing.html', name=current_user.fname)
 
 
 @app.route('/logout')
@@ -206,6 +181,22 @@ def login_landing():
 def logout():
     logout_user()
     return redirect('/login')
+
+
+# @app.route('/interest', methods=["GET", "POST"])
+# def search_user_interest():
+#     """Takes in a request from Search.html and returns results"""
+#
+#     # Takes in the search input
+#     user_input = request.form.get('memberInput')
+#     print(user_input)
+#
+#     # Queries the users input against the database
+#     intresults = crud.get_user_interest(user_input)
+#     print(intresults)
+#
+#     # Passes the query results back to Search.html
+#     return render_template('interest.html', intresults=intresults)
 
 
 if __name__ == '__main__':
