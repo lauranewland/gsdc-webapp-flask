@@ -1,6 +1,7 @@
 img {
-    vertical-align: middle;
-    height: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 /* Carousel Container */
 .slide-ctr {
@@ -9,14 +10,15 @@ img {
     margin: auto;
 }
 
-/* Img Number Text */
+/* Img Number Text
 .numtext{
     color: black;
     font-size: 12px;
     padding: 8px 12px;
     position: absolute;
-    top: 0;
-}
+    top: 10px;
+    left: 400px;
+}*/
 
 /* Img Dots */
 .dot {
