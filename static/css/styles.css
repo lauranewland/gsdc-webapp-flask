@@ -23,16 +23,6 @@ th, td {
     padding: 15px;
 }
 
-/* Dark Mode */
-body.dark-theme {
-    color: #eee;
-    background: #121212;
-}
-
-body.dark-theme a {
-    color: #809fff;
-}
-
 .p1 {
     padding: 12px 20px;
     width: 100%;
@@ -112,4 +102,14 @@ h1 {
 
 .membershipdiv {
   margin-right: 5px;
+}
+
+/* Dark Mode */
+body.dark-theme {
+    color: #eee;
+    background: #121212;
+}
+
+body.dark-theme a {
+    color: #809fff;
 }
