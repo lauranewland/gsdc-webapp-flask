@@ -3,8 +3,8 @@
 {% block body %}
     <h2>German Shepherd Dog Club of Minneapolis & St. Paul</h2>
 
-    <h3>Membership Application Form</h3>
-        <form  action="/users" method="POST">
+        <form class="signup-form" action="/users" method="POST">
+            <h3>Membership Application Form</h3>
             <div class="container1 custom-control-inline">
                 First Name: <input class="form-control" type="text" name="fname">
                 Last Name: <input class="form-control" type="text" name="lname">
@@ -37,9 +37,11 @@
                         <option value="false">No</option>
                     </select>
                 </p>
-                <p>Do you belong to any other Organizations? <input type="text" name="other_orgs"></p>
-                <p>How many German Shepherds do you own? <input type="text" name="num_of_gsd"></p>
-                <p>How many breedings have you done? <input type="text" name="num_breedings"></p>
+                <p>
+                    <p>Do you belong to any other Organizations? <input type="text" name="other_orgs"></p>
+                    <p>How many German Shepherds do you own? <input type="text" name="num_of_gsd"></p>
+                    <p>How many breedings have you done? <input type="text" name="num_breedings"></p>
+                </p>
             </div>
 
             <h3>What Club Interests do you have?</h3>
