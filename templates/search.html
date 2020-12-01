@@ -5,9 +5,9 @@
 
     <h1>Membership Directory Search</h1>
 
-               <form action="/search" method="POST" autocomplete="on" >
-            <p>Search <input type="text" name="meminput">
-            <button class="search-btn" type="submit">Submit</button>
+        <form action="/search" method="POST" autocomplete="on" >
+            <input class="searchBox" type="text" name="meminput" placeholder="Search...">
+            <button id="search-btn" type="submit">Submit</button>
         </form>
 
         <table class="table table-striped">
@@ -44,8 +44,17 @@
               </tr>
                 {% endfor %}
         </table>
-<br>
-<br>
-<footer><a href="/login_landing">Back to Landing Page</a> </footer>
+
+    <script>
+        $(document).ready(function(){
+            $("#visibility").css("display", "none");
+
+        $("#search-btn").click(function() {
+            alert("Yep")
+            $("#visibility").css("display", "block");
+        });
+    });
+
+    </script>
 
 {% endblock %}
