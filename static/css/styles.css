@@ -111,6 +111,16 @@ h1 {
 .searchBox {
     margin-left: 10px;
 }
+.welcome {
+     text-align: center;
+}
+.gsdInfo{
+    margin-left: 10px;
+}
+#wrapper {
+    display: flex;
+    align-items: center;
+}
 /* Dark Mode */
 body.dark-theme {
     color: #eee;
