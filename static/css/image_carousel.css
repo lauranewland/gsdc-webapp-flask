@@ -1,7 +1,8 @@
-/* img {
-    margin-left: 1350px;
+img {
+    margin-left: auto;
+    margin-right: auto;
     display: block;
-}*/
+}
 /* Carousel Container */
 .slide-ctr {
     width: 100%;
@@ -28,6 +29,9 @@
     border-radius: 20%;
     display: inline-block;
     transition: background-color 0.6s ease;
+}
+.dotdiv {
+    text-align: center;
 }
 
 /* Change Active Dot Color */

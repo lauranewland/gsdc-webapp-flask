@@ -117,10 +117,10 @@ h1 {
 .gsdInfo{
     margin-left: 10px;
 }
-#wrapper {
+/*#wrapper {
     display: flex;
     align-items: center;
-}
+}*/
 /* Dark Mode */
 body.dark-theme {
     color: #eee;
