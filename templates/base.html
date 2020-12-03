@@ -29,7 +29,7 @@
           {% if not current_user.is_authenticated %}
           <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Become a Memeber</a></li>
           {% endif %}
-          <li><a href="/login" id="loged-in"><span id="login-icon" class="glyphicon glyphicon-log-in"></span>?</a></li>
+          <li><a href="/login" id="logged_in"><span id="login-icon" class="glyphicon glyphicon-log-in"></span>?</a></li>
           {% if current_user.is_authenticated %}
           <li><a href="/login_landing"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
           <li class="dropdown">
