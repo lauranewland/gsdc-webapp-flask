@@ -4,7 +4,7 @@
 const btn = document.querySelector(".btn-toggle");
 
 btn.addEventListener("click", function () {
-    alert("hi")
+
   document.body.classList.toggle("dark-theme");
 });
 
