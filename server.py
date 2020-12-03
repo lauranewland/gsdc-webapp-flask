@@ -1,4 +1,4 @@
-from flask import (Flask, render_template, request, flash, session, redirect)
+from flask import (Flask, render_template, request, flash, session, redirect, jsonify)
 from werkzeug.security import check_password_hash
 from model import connect_to_db, Users
 from jinja2 import StrictUndefined
@@ -174,6 +174,12 @@ def login_post():
 def login_landing():
     """Renders Login Landing Page"""
     return render_template('login_landing.html', name=current_user.fname)
+
+
+@app.route('/isLoggedIn')
+def logged_in():
+    """AJAX backed for log"""
+    return jsonify(current_user.is_authenticated)
 
 
 @app.route('/logout')
