@@ -2,7 +2,7 @@
 
 $.get("/isLoggedIn", (resp) => {
 
-    var target = $("#logged_in");
+    var target = $("#logged-in");
 
     if (resp) {
         target.html("Log Out");
